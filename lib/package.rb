@@ -24,7 +24,7 @@ private
 
     if formula_ids.kind_of?(Array)
       formula_ids.each do |id|
-        formulas.sadd(id)
+        formulas.key.sadd(id)
       end
     end
   end
