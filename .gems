@@ -6,3 +6,6 @@ pbkdf2 -v 0.1.0
 scrivener -v 0.0.3
 rake -v 0.9.2.2
 rack -v 1.4.1
+unicorn -v 4.2.0
+kgio -v 2.7.2
+raindrops -v 0.8.0
