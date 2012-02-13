@@ -1,3 +1,6 @@
 mote -v 0.2.0
 nest -v 1.1.0
 redis -v 2.2.2
+shield -v 0.1.0.rc1
+pbkdf2 -v 0.1.0
+scrivener -v 0.0.3

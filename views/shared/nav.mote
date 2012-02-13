@@ -1,0 +1,37 @@
+<ul class="nav">
+  <li class="active">
+    <a href="/">Home</a>
+  </li>
+  <li>
+    <a href="/download">Download</a>
+  </li>
+  
+  % if current_user
+    % if current_user.admin?
+      <li>
+        <a href="/admin/users">Users</a>
+      </li>
+
+      <li>
+        <a href="/admin/formulas">Formulas</a>
+      </li> 
+    % else current_user
+      <li>
+        <a href="/patients">Patients</a>
+      </li>
+    % end
+  % end
+</ul>
+
+<p class="navbar-text pull-right">
+  % if current_user
+    Logged in as <a href="/account">{{ current_user.full_name }}</a>
+    <span class="divider">|</span>
+    <a href="/logout">Logout</a>
+  % else
+    <a href="/login">Login</a>
+    <span class="divider">|</span>
+    <a href="/signup">Signup</a>
+  % end
+</p>
+

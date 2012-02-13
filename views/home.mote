@@ -1,0 +1,39 @@
+<div class="hero-unit">
+  <h1>Care for your patients even while you're on the go!</h1>
+
+  <p>A list of easy to use medical formulas for common clinical 
+     situations which you can perform while online.</p>
+
+</div>
+
+<div class="row">
+  <div class="span6">
+    <h2>Mobile Download</h2>
+
+    <p>
+      You may request a <strong>free download</strong> for 
+      your cellphone. The minimum requirment is an 
+      <strong>MIDP 1.0</strong> Compliant Device.</p>
+
+    <p>
+      <a href="http://java.sun.com/products/midp/overview.html"
+         class="btn" target="_blank">MIDP Overview</a>
+    </p>
+  </div>
+  
+  <div class="span6">
+    <h2>WAP Compatibility</h2>
+    <p>
+      If you wish to use the <strong>WAP</strong> interface, 
+      you will need a <strong>WAP 2.0 / XHTML Mobile Profile</strong>.</p>
+
+    <p>      
+      Your best bet is to download 
+      <a target="_blank" href="http://www.opera.com/mobile/">Opera Mobile</a>
+    </p>
+
+    <p>
+      <a class="btn" href="/download">Learn More</a>
+    </p>
+  </div>
+</div>

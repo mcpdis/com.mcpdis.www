@@ -1,0 +1,94 @@
+<div class="page-header">
+  <h1>Signup</h1>
+</div>
+
+<form action="/signup" method="post" class="form-horizontal">
+  <fieldset>
+    <div class="control-group {{ 'error' if has_error?(user, :email) }}">
+      <label>Email</label>
+      <div class="controls">
+        <input class="input-xlarge" type="email" name="user[email]" value="{{ user.email }}">
+        
+        % if has_error?(user, :email)
+          <p class="help-inline">
+            You need to provide a valid email address.
+          </p>
+        % else
+          <p class="help-block">
+            We won't send you any unsolicited email. You'll
+            use this to login to your account after signing up.
+          </p>
+        % end
+      </div>
+    </div>
+
+    <div class="control-group {{ 'error' if has_error?(user, :password) }}">
+      <label>Password</label>
+      <div class="controls">
+        <input class="input-xlarge" type="password" name="user[password]" 
+               value="{{ user.password }}">
+        
+        % if has_error?(user, :password)
+          <p class="help-inline">
+            A password is required and must be at least 6 characters long.
+          </p>
+        % else
+          <p class="help-block">
+            At least 6 characters, preferrably a non-dictionary word.
+          </p>
+        % end
+      </div>
+    </div>
+
+    <div class="control-group {{ 'error' if has_error?(user, :password_confirmation) }}">
+      <label>Confirm Password</label>
+      <div class="controls">
+        <input class="input-xlarge" type="password" 
+               name="user[password_confirmation]" value="{{ user.password_confirmation }}">
+
+        % if has_error?(user, :password_confirmation)
+          <p class="help-inline">
+            You must confirm your password.
+          </p>
+        % end
+      </div>
+    </div>
+
+    <div class="control-group {{ 'error' if has_error?(user, :first_name) }}">
+      <label>First Name</label>
+      <div class="controls">
+        <input class="input-xlarge" type="text" name="user[first_name]" 
+               value="{{ user.first_name }}">
+  
+        % if has_error?(user, :first_name)
+          <p class="help-inline">
+            Your first name is required.
+          </p>
+        % else
+          <p class="help-block">
+            This is never shared publicly and is 
+            only used for identifying you within the site.
+          </p>
+        % end
+      </div>
+    </div>
+
+    <div class="control-group {{ 'error' if has_error?(user, :last_name) }}">
+      <label>Last Name</label>
+      <div class="controls">
+        <input class="input-xlarge" type="text" name="user[last_name]" 
+               value="{{ user.last_name }}">
+
+        % if has_error?(user, :first_name)
+          <p class="help-inline">
+            Your last name is required as well.
+          </p>
+        % end
+      </div>
+    </div>
+  
+    <div class="form-actions">
+      <button type="submit" name="signup" class="btn">Create your account</button>  
+    </div>
+  </fieldset>
+</form>

@@ -1,0 +1,25 @@
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  /* background-image: url("../images/grid.png"); */
+  /* background-repeat: repeat-x; */
+  /* background-position: 0 40px; */
+}
+
+.sidebar-nav {
+  padding: 9px 0;
+}
+
+.navbar .navbar-inner .container .brand {
+  padding: 10px 20px;
+  font-weight: bold;
+  color: black;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.navbar-text .divider { color: #AAA; margin: 0 5px; }
+.navbar-text a { color: #999; }
+.navbar-text a:hover { color: #FFF; }
