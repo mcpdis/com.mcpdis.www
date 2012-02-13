@@ -1,5 +1,6 @@
 $:.unshift(*Dir["./vendor/*/lib"])
 
+require "digest/md5"
 require "cuba"
 require "cuba/contrib"
 require "ohm"

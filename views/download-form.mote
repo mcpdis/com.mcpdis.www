@@ -14,7 +14,7 @@
       % formulas.each do |formula|
       <li>
         <label class="checkbox">
-          <input type="checkbox" name="formulas[{{ formula.id }}]" value="1">
+          <input type="checkbox" name="formulas[]" value="{{ formula.id }}">
           {{ formula.title }}
         </label>
       </li>

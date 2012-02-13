@@ -1,9 +1,12 @@
+MCPDIS_ROOT = File.expand_path(File.dirname(__FILE__))
+MCPDIS_HOST = ENV["MCPDIS_HOST"] || "http://mcpdis.cyrildavid.com"
+
 require_relative "shotgun"
 
 Dir["./lib/**/*.rb"].each { |rb| require rb }
 
 Cuba.use Rack::Static,
-  urls: ["/img", "/style", "/js"],
+  urls: ["/img", "/style", "/js", "/packages"],
   root: "./public"
 
 Cuba.use Rack::Session::Cookie,
@@ -61,17 +64,21 @@ Cuba.define do
   end
 
   on "download" do
-    on "success" do
-      res.write view("download-success")
+    on :id do |id|
+      package = Package[id]
+
+      res.write view("download-success", package: package)
     end
 
     on get do
       res.write view("download", formulas: FormulaDictionary.all)
     end
 
-    on post do
-      sleep 5
-      res.redirect "/download/success", 303
+    on post, param("formulas") do |formula_ids|
+      package = Package.create(user: current_user, formula_ids: formula_ids)
+      Compiler.build(package)
+
+      res.redirect "/download/#{package.id}", 303
     end
   end
 
