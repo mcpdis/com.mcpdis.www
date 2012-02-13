@@ -1,0 +1,39 @@
+<div class="page-header">
+  <h1>Package Complete!</h1>
+</div>
+
+<div class="well">
+  <h2>Mobile Use</h2>
+
+  <p>In order to download this to your mobile device, you
+     must have <b>MIDP Over the air provisioning</b> enabled
+     on your phone.</p>
+
+  <a href="/packages/{{ package.signature }}/mobile.mcpdis.jad"
+     class="btn">Download to my phone now &raquo;</a>
+</div>
+
+<div class="well">
+  <h2>Emulator</h2>
+
+  <p>If you're going to run these files using a desktop
+     emulator, simply download the following files:</p>
+
+  <dl>
+    <dt><a href="/packages/{{ package.signature }}/mcpdis.jad"
+           title="MCPDIS JAD File">MCPDIS.JAD</a></dt>
+    <dd>
+      You can open this JAD file using an emulator such as
+      the J2ME Wireless Toolkit.
+    </dd>
+
+    <dt><a href="/packages/{{ package.signature }}/mcpdis.jar"
+           title="MCPDIS JAR File">MCPDIS.JAR</a></dt>
+
+    <dd>
+      Make sure you download the JAR file and place it in the
+      same folder as the JAD file if you intend to run it
+      agaist an emulator.
+    </dd>
+  </dl>
+</div>
