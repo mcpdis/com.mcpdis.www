@@ -40,7 +40,7 @@ class User < Ohm::Model
   attr :password
 
   def self.fetch(identifier)
-    find(email: canonical(identifier)).first
+    with(:email, canonical(identifier))
   end
 
   def self.canonical(identifier)

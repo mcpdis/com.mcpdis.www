@@ -1,0 +1,13 @@
+<h2>
+  The following formulas are available for download:
+</h2>
+
+<br>
+
+<ol>
+  % formulas.each do |formula|
+    <li>{{ formula.title }}</li>
+  % end
+</ol>
+
+<a class="btn" href="/login?redirect=/download">Download Now &raquo;</a>

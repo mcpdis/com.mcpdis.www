@@ -1,0 +1,37 @@
+<div id="before-download">
+  <h2>Select the formulas you want then click on the button at the bottom:</h2>
+  <br>
+  <p>
+    Select:
+
+    <a href="#check-all">all</a>
+    |
+    <a href="#uncheck-all">none</a>
+  </p>
+
+  <form id="download-form" action="/download" method="post">
+    <ul class="unstyled">
+      % formulas.each do |formula|
+      <li>
+        <label class="checkbox">
+          <input type="checkbox" name="formulas[{{ formula.id }}]" value="1">
+          {{ formula.title }}
+        </label>
+      </li>
+      % end
+    </ul>
+
+    <div class="form-actions">
+      <button class="btn" type="submit" value="ok"
+              name="submit">Ok, I'm ready &raquo;</button>
+    </div>
+  </form>
+</div>
+
+<div id="after-download" class="hide offset3 span5 well">
+  <h2>Packaging your MIDlet now...</h2>
+  <br>
+  <div class="progress progress-striped active">
+    <div class="bar" style="width: 100%;"></div>
+  </div>
+</div>

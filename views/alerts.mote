@@ -1,0 +1,11 @@
+% if session[:error]
+  <div class="alert alert-error">
+    {{ session.delete(:error) }}
+  </div>
+% end
+
+% if session[:success]
+  <div class="alert alert-success">
+    {{ session.delete(:success) }}
+  </div>
+% end
