@@ -24,4 +24,34 @@
             return true;
         }
     });
+
+    if ($("#apps").length == 1) {
+        $.each($("#apps tbody tr"), function() {
+            var $tr = $(this);
+
+            if ($tr.find("ol > li").length > 3) {
+                $("li:nth-child(1), li:nth-child(2), li:nth-child(3)", $tr).
+                    addClass("fixed");
+
+                $("li:not(.fixed)", $tr).addClass("hide");
+
+                $("ol", $tr).after("<a href='#show-all'>Show all &raquo;</a>");
+            }
+        });
+
+        $("a[href*='#show-all']").live("click", function() {
+            var $a = $(this),
+                $li = $a.parents("tr").find("li:not(.fixed)");
+
+            $li.toggleClass("hide");
+
+            if ($a.text().match(/Show/)) {
+              $a.html("&laquo; Hide")
+            } else {
+              $a.html("Show all &raquo;")
+            }
+
+            return false;
+        });
+    }
 })(jQuery);
