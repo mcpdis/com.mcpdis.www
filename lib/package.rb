@@ -1,6 +1,8 @@
 class Package < Ohm::Model
   SECRET = "gAlTFFSO6NZgdr0rnf43V5O0mQR14NxekdSkXudW9ipi4J3VLI2GPvXEfIzoYkb"
 
+  include Ohm::Timestamping
+
   reference :user, User
   set :formulas, FormulaDictionary
 
