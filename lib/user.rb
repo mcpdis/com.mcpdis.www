@@ -8,6 +8,7 @@ class User < Ohm::Model
   attribute :admin
 
   unique :email
+  collection :packages, Package
 
   attr :password
 
@@ -17,6 +18,10 @@ class User < Ohm::Model
 
   def self.canonical(identifier)
     identifier.to_s.downcase.strip
+  end
+
+  def latest_packages
+    packages.sort_by(:created_at, order: "DESC")
   end
 
   def email=(email)
