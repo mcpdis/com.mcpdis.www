@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>Apps</h1>
+</div>
+
+<table id="apps" class="table">
+  <thead> 
+    <tr>
+      <th>Formulas</th>
+      <th>Total</th>
+      <th>Download</th>
+      <th>Date Created</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+  % packages.each do |package|
+    <tr>
+      <td>
+        <ol>
+          % package.formulas.each do |formula|
+            <li>{{ formula.title }}</li>
+          % end
+        </ol>
+      </td>
+
+      <td>
+        {{ package.formulas.size }}
+      </td>
+  
+      <td>
+        <a href="/download/{{ package.id }}">View</a>
+      </td>
+
+      <td class="span3">
+        {{ package.created_at.strftime('%B %d %Y') }}
+      </td>
+    </tr>
+  % end
+  </tbody>
+</table>

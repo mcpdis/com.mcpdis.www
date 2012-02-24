@@ -1,11 +1,12 @@
 <ul class="nav">
-  <li class="active">
+  <li class="{{ 'active' if in?('/', path) }}">
     <a href="/">Home</a>
   </li>
-  <li>
+
+  <li class="{{ 'active' if under?('/download', path) }}">
     <a href="/download">Download</a>
   </li>
-  
+
   % if current_user
     % if current_user.admin?
       <li>
@@ -14,10 +15,13 @@
 
       <li>
         <a href="/admin/formulas">Formulas</a>
-      </li> 
-    % else current_user
-      <li>
+      </li>
+    % else
+      <li class="{{ 'active' if under?('/patients', path) }}">
         <a href="/patients">Patients</a>
+      </li>
+      <li class="{{ 'active' if under?('/apps', path) }}">
+        <a href="/apps">Apps</a>
       </li>
     % end
   % end
@@ -34,4 +38,3 @@
     <a href="/signup">Signup</a>
   % end
 </p>
-

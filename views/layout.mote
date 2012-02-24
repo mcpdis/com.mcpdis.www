@@ -23,7 +23,7 @@
         <div class="container">
           <a class="brand" href="/">MCPDIS</a>
           <div class="nav-collapse">
-            {{ partial "shared/nav", current_user: current_user }}
+            {{ partial "shared/nav", current_user: current_user, path: path }}
           </div>
         </div>
       </div>
