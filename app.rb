@@ -19,6 +19,8 @@ Cuba.plugin Shield::Helpers
 Cuba.plugin MCPDIS::Helpers
 
 Cuba.define do
+  persist_session!
+
   on "login" do
     on get do
       if req[:redirect] && req[:redirect] =~ %r{/[a-z]+}
@@ -29,18 +31,13 @@ Cuba.define do
     end
 
     on post do
-      if login(User, req[:email], req[:password])
+      if login(User, req[:email], req[:password], req[:remember])
         res.redirect session.delete(:redirect_to) || "/"
       else
         session[:error] = "Invalid username and/or password combination."
         res.write view("login", email: req[:email])
       end
     end
-  end
-
-  on "logout" do
-    logout(User)
-    res.redirect "/", 303
   end
 
   on "signup" do
@@ -60,29 +57,44 @@ Cuba.define do
     end
   end
 
-  on "dashboard" do
-  end
-
   on "download" do
     on :id do |id|
+      ensure_authenticated(User)
+
       package = Package[id]
 
       res.write view("download-success", package: package)
     end
 
-    on get do
-      res.write view("download", formulas: FormulaDictionary.all)
-    end
-
     on post, param("formulas") do |formula_ids|
+      ensure_authenticated(User)
+
       package = Package.create(user: current_user, formula_ids: formula_ids)
       Compiler.build(package)
 
       res.redirect "/download/#{package.id}", 303
     end
+
+    on default do
+      res.write view("download", formulas: FormulaDictionary.all)
+    end
   end
 
   on "" do
     res.write view("home")
+  end
+
+  on authenticated(User) do
+    on "dashboard" do
+    end
+
+    on "logout" do
+      logout(User)
+      res.redirect "/", 303
+    end
+
+    on "apps" do
+      res.write view("apps", packages: current_user.latest_packages)
+    end
   end
 end
