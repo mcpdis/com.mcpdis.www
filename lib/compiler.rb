@@ -12,16 +12,16 @@ class Compiler
   TEMPLATE   = File.join(MCPDIS_ROOT, "config/template.project.properties")
   MARKER     = "{{{{ MIDLETS }}}}"
   LINEFORMAT = "MIDlet-%d: %s, , %s\\n"
-  
+
   TARGET     = File.join(MCPDIS_ROOT, "public/packages/%s")
 
   attr :package
   attr :target
-  
+
   def self.build(package)
-    new(package).build 
+    new(package).build
   end
-  
+
   def initialize(package)
     @package = package
     @target  = TARGET % package.signature
@@ -34,7 +34,7 @@ class Compiler
       FileUtils.chdir(PROJECT) do
         system(ANT)
       end
-      
+
       FileUtils.mkdir_p(target)
 
       FileUtils.mv(JAD_FILE, target)
@@ -43,7 +43,7 @@ class Compiler
       write_mobile_jad!
     end
   end
-  
+
   def write_mobile_jad!(origin = "mcpdis.jad", mobile = "mobile.mcpdis.jad")
     jad = File.read(File.join(target, origin), encoding: "utf-8")
     jad.gsub!(/mcpdis.jar$/, package.jar_url)
@@ -58,9 +58,17 @@ class Compiler
       file.write(project_properties)
     end
   end
-  
+
   def project_properties
-    File.read(TEMPLATE, encoding: "utf-8").gsub(MARKER, midlets)
+    File.read(TEMPLATE, encoding: "utf-8").gsub(MARKER, midlet_properties)
+  end
+
+  def midlet_properties
+    midlets +
+      "FormulaArchiveUrl: #{MCPDIS_HOST}/api/v1/formulas/archive\\n" +
+      "PatientArchiveUrl: #{MCPDIS_HOST}/api/v1/patients/archive\\n" +
+      "UserEmail: #{package.user.email}\\n" +
+      "HashCode: #{package.user.hash_code}\\n"
   end
 
   def midlets

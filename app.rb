@@ -1,5 +1,5 @@
 MCPDIS_ROOT = File.expand_path(File.dirname(__FILE__))
-MCPDIS_HOST = ENV["MCPDIS_HOST"] || "http://mcpdis.cyrildavid.com"
+MCPDIS_HOST = ENV["MCPDIS_HOST"] || "http://localhost:8080"
 
 require_relative "shotgun"
 
@@ -96,5 +96,9 @@ Cuba.define do
     on "apps" do
       res.write view("apps", packages: current_user.latest_packages)
     end
+  end
+
+  on "api/v1" do
+    run API
   end
 end
