@@ -70,7 +70,7 @@ module MCPDIS
     end
 
     def mote_vars(content)
-      super.merge(path: req.path)
+      super.merge(path: req.path, current_user: current_user)
     end
 
     def under?(fragment, path)
