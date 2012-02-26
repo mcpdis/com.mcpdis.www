@@ -6,8 +6,8 @@ class Compiler
   JAD_FILE   = "/srv/mcpdis/dist/mcpdis.jad"
   JAR_FILE   = "/srv/mcpdis/dist/mcpdis.jar"
 
-  ANT        = File.join(ENV["ANT_HOME"], "bin", "ant")
-  JAVA       = File.join(ENV["JAVA_HOME"], "bin", "java")
+  ANT        = File.join(ANT_HOME, "bin", "ant")
+  JAVA       = File.join(JAVA_HOME, "bin", "java")
 
   TEMPLATE   = File.join(MCPDIS_ROOT, "config/template.project.properties")
   MARKER     = "{{{{ MIDLETS }}}}"
