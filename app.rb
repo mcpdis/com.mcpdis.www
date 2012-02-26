@@ -83,6 +83,8 @@ Cuba.define do
   end
 
   on "" do
+    redirect "/dashboard" if authenticated(User)
+
     res.write view("home")
   end
 
@@ -94,6 +96,7 @@ Cuba.define do
     ensure_authenticated(User)
 
     on "dashboard" do
+      res.write view("dashboard", current_user: current_user)
     end
 
     on "logout" do
