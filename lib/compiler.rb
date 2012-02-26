@@ -32,7 +32,7 @@ class Compiler
       rewrite_project_properties!
 
       FileUtils.chdir(PROJECT) do
-        system(ANT)
+        %x{env JAVA_HOME=#{JAVA_HOME} #{ANT}}
       end
 
       FileUtils.mkdir_p(target)
