@@ -8,6 +8,8 @@ class Patient < Ohm::Model
   attribute :date_of_birth, Type::Timestamp
   attribute :remote_id
 
+  unique :identifier
+
   reference :user, User
 
   def identifier
@@ -26,5 +28,9 @@ class Patient < Ohm::Model
     end
 
     patient.update(atts)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end

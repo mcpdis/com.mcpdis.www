@@ -20,6 +20,9 @@
       <li class="{{ 'active' if under?('/patients', path) }}">
         <a href="/patients">Patients</a>
       </li>
+      <li class="{{ 'active' if under?('/formulas', path) }}">
+        <a href="/formulas">Formulas</a>
+      </li>
       <li class="{{ 'active' if under?('/apps', path) }}">
         <a href="/apps">Apps</a>
       </li>

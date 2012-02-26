@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1>Formulas</h1>
+</div>
+
+<table class="table">
+  <thead>
+    <th>ID</th>
+    <th>Remote ID</th>
+    <th>Name</th>
+    <th>Result</th>
+    <th>Patient</th>
+    <th>Date Created</th>
+    <th>Last Synced</th>
+  </thead>
+  
+  <tbody>
+    % formulas.each do |formula|
+      <tr>
+        <td>{{ formula.id }}</td>
+        <td>{{ formula.remote_id }}</td>
+        <td>{{ formula.name }}</td>
+        <td>{{ formula.result }}</td>
+        <td>{{ formula.patient.full_name }}</td>
+        <td>{{ formula.timestamp.strftime('%B %d, %Y') }}</td>
+        <td>{{ time_ago(formula.updated_at) }}</td>
+      </tr>
+    % end
+  </tbody>
+</table>

@@ -84,7 +84,13 @@ Cuba.define do
     res.write view("home")
   end
 
-  on authenticated(User) do
+  on "api/v1" do
+    run API
+  end
+
+  on default do
+    ensure_authenticated(User)
+
     on "dashboard" do
     end
 
@@ -96,9 +102,13 @@ Cuba.define do
     on "apps" do
       res.write view("apps", packages: current_user.latest_packages)
     end
-  end
 
-  on "api/v1" do
-    run API
+    on "patients" do
+      res.write view("patients", patients: current_user.patients)
+    end
+
+    on "formulas" do
+      res.write view("formulas", formulas: current_user.formulas)
+    end
   end
 end

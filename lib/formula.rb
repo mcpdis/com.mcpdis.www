@@ -1,5 +1,6 @@
 class Formula < Ohm::Model
   include Ohm::DataTypes
+  include Ohm::Timestamping
 
   attribute :name
   attribute :result
@@ -27,5 +28,9 @@ class Formula < Ohm::Model
     end
 
     formula.update(atts)
+  end
+
+  def patient
+    Patient.with(:identifier, Patient.identifier(user_id, patient_id))
   end
 end

@@ -10,6 +10,8 @@ class User < Ohm::Model
 
   unique :email
   collection :packages, Package
+  collection :patients, Patient
+  collection :formulas, Formula
 
   attr :password
 

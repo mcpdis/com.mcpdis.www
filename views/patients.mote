@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1>Patients</h1>
+</div>
+
+<table class="table">
+  <thead>
+    <th>ID</th>
+    <th>Remote ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Gender</th>
+    <th>Date of Birth</th>
+    <th>Last Synced</th>
+  </thead>
+  
+  <tbody>
+    % patients.each do |patient|
+      <tr>
+        <td>{{ patient.id }}</td>
+        <td>{{ patient.remote_id }}</td>
+        <td>{{ patient.first_name }}</td>
+        <td>{{ patient.last_name }}</td>
+        <td>{{ patient.gender }}</td>
+        <td>{{ patient.date_of_birth.strftime('%B %d, %Y') }}</td>
+        <td>{{ time_ago(patient.updated_at) }}</td>
+      </tr>
+    % end
+  </tbody>
+</table>
