@@ -1,0 +1,16 @@
+<div class="page-header">
+  <h1>Welcome to MCPDIS!</h1>
+</div>
+
+<p>
+  If you haven't already started, please 
+  <a href="/download">checkout the download page</a>
+</p>
+
+<p>
+  You currently have synced 
+  
+  <strong>{{ current_user.patients.size }}</strong> patients
+  and 
+  <strong>{{ current_user.formulas.size }}</strong> formulas.
+</p>
