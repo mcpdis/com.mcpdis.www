@@ -6,7 +6,11 @@ class CreateUser < Scrivener
   attr_accessor :last_name
 
   def validate
-    assert_email(:email)
+    if assert_email(:email)
+      assert User.with(:email, email).nil?,
+        [:email, :not_unique]
+    end
+
     assert_present(:first_name)
     assert_present(:last_name)
 

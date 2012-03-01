@@ -8,10 +8,14 @@
       <label>Email</label>
       <div class="controls">
         <input class="input-xlarge" type="email" name="user[email]" value="{{ user.email }}">
-        
+
         % if has_error?(user, :email)
           <p class="help-inline">
-            You need to provide a valid email address.
+            % if user.errors[:email].include?(:not_unique)
+              The email address you specified has already been taken.
+            % else
+              You need to provide a valid email address.
+            % end
           </p>
         % else
           <p class="help-block">
@@ -25,9 +29,9 @@
     <div class="control-group {{ 'error' if has_error?(user, :password) }}">
       <label>Password</label>
       <div class="controls">
-        <input class="input-xlarge" type="password" name="user[password]" 
+        <input class="input-xlarge" type="password" name="user[password]"
                value="{{ user.password }}">
-        
+
         % if has_error?(user, :password)
           <p class="help-inline">
             A password is required and must be at least 6 characters long.
@@ -43,7 +47,7 @@
     <div class="control-group {{ 'error' if has_error?(user, :password_confirmation) }}">
       <label>Confirm Password</label>
       <div class="controls">
-        <input class="input-xlarge" type="password" 
+        <input class="input-xlarge" type="password"
                name="user[password_confirmation]" value="{{ user.password_confirmation }}">
 
         % if has_error?(user, :password_confirmation)
@@ -57,16 +61,16 @@
     <div class="control-group {{ 'error' if has_error?(user, :first_name) }}">
       <label>First Name</label>
       <div class="controls">
-        <input class="input-xlarge" type="text" name="user[first_name]" 
+        <input class="input-xlarge" type="text" name="user[first_name]"
                value="{{ user.first_name }}">
-  
+
         % if has_error?(user, :first_name)
           <p class="help-inline">
             Your first name is required.
           </p>
         % else
           <p class="help-block">
-            This is never shared publicly and is 
+            This is never shared publicly and is
             only used for identifying you within the site.
           </p>
         % end
@@ -76,7 +80,7 @@
     <div class="control-group {{ 'error' if has_error?(user, :last_name) }}">
       <label>Last Name</label>
       <div class="controls">
-        <input class="input-xlarge" type="text" name="user[last_name]" 
+        <input class="input-xlarge" type="text" name="user[last_name]"
                value="{{ user.last_name }}">
 
         % if has_error?(user, :first_name)
@@ -86,9 +90,9 @@
         % end
       </div>
     </div>
-  
+
     <div class="form-actions">
-      <button type="submit" name="signup" class="btn">Create your account</button>  
+      <button type="submit" name="signup" class="btn">Create your account</button>
     </div>
   </fieldset>
 </form>
