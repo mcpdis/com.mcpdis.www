@@ -17,3 +17,18 @@ task :setup do
 
   puts "\n=> Imported Formulas"
 end
+
+task :flush do
+  system("redis-cli flushall")
+end
+
+task :cleanup do
+  system("rm -rf public/packages/*")
+  system("rm -rf /home/cyx/j2mewtk/2.5.2/apps/mcpdis")
+end
+
+task :reset_downloads do
+  system("rm -rf /home/cyx/Downloads/mcpdis*")
+end
+
+task :reset => [:flush, :cleanup, :reset_downloads, :setup]

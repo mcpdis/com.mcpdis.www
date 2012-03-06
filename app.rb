@@ -1,5 +1,5 @@
 MCPDIS_ROOT = File.expand_path(File.dirname(__FILE__))
-MCPDIS_HOST = ENV["MCPDIS_HOST"] || "http://localhost"
+MCPDIS_HOST = ENV["MCPDIS_HOST"] || "http://0.0.0.0"
 ANT_HOME    = ENV["ANT_HOME"] || "/home/cyx/netbeans-7.1/java/ant"
 JAVA_HOME   = ENV["JAVA_HOME"] || "/home/cyx/jdk1.7.0_02"
 
